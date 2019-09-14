@@ -27,7 +27,7 @@ class Nodes
                 },
 
      'vdsl2' => { :interfaces => [{ :network_name => 'external6-net', :ipv4 => '114.23.248.159', :network => '114.23.248.159/32', :route_hint => [] }, 
-                                  { :network_name => 'dsl2-net', :ipv4 => '100.64.1.34', :network => '100.64.0.32/27', :route_hint => [] },
+                                  { :network_name => 'dsl2-net', :ipv4 => '100.64.0.34', :network => '100.64.0.32/27', :route_hint => [] },
                                  ],
                   :node_type => :manual,
                   :routes => []    
@@ -53,15 +53,13 @@ class Nodes
               
     #internal distirbuiton routers to client sites      
     'lk1t' => { :interfaces => [ { :network_name => 'lk1t-dist-net', :ipv4 => '192.168.219.1',  :network => '192.168.219.0/24', :route_hint => [{:network => '10.19.0.0/16', :network_name => 'lk1t-sites'}] },
-                                 { :network_name => 'lk1t-dist-net2', :ipv4 => '100.64.134.1',  :network => '100.64.134.0/23', :route_hint => [] },
                                  { :network_name => 'gate-net', :ipv4 => '100.64.0.5', :network => '100.64.0.0/27', :route_hint => [] }, 
                                ],
-                  :node_type => :linux,
+                  :node_type => :json,
                   :routes => []    
                 },
  
     'lk2' => { :interfaces => [{ :network_name => 'lk2-dist-net', :ipv4 => '192.168.206.1',  :network => '192.168.206.0/24', :route_hint => [{:network => '10.6.0.0/16', :network_name => 'lk2-sites'}] },
-                              { :network_name => 'lk2-dist-net2', :ipv4 => '100.64.136.1',  :network => '100.64.136.0/23', :route_hint => [] },
                               { :network_name => 'gate-net', :ipv4 => '100.64.0.6', :network => '100.64.0.0/27', :route_hint => [] }, 
                               ],
                    :node_type => :linux,
@@ -70,8 +68,6 @@ class Nodes
 
     'lk4' => { :interfaces => [{ :network_name => 'lk4-dist-net', :ipv4 => '192.168.208.1',  :network => '192.168.208.0/24', :route_hint => [{:network => '10.8.0.0/16', :network_name => 'lk4-sites'}] },
                               { :network_name => 'lk4-net', :ipv4 => '10.8.0.30', :network => '10.8.0.0/27', :route_hint => [] },
-                              { :network_name => 'lk4-dist-net2', :ipv4 => '100.64.138.1',  :network => '100.64.138.0/23', :route_hint => [] },
-                              { :network_name => 'lk4-site', :ipv4 => '100.64.0.106', :network => '100.64.0.104/29', :route_hint => [] }, 
                              ],
                   :node_type => :linux,
                   :routes => []    
@@ -79,8 +75,6 @@ class Nodes
 
     'lk5' => { :interfaces => [{ :network_name => 'lk5-dist-net', :ipv4 => '192.168.209.1',  :network => '192.168.209.0/24', :route_hint => [{:network => '10.9.0.0/16', :network_name => 'lk5-sites'}] },
                               { :network_name => 'lk5-net', :ipv4 => '10.9.0.30', :network => '10.9.0.0/27', :route_hint => [] },
-                              { :network_name => 'lk5-dist-net2', :ipv4 => '100.64.140.1',  :network => '100.64.140.0/23', :route_hint => [] },
-                              { :network_name => 'lk5-site', :ipv4 => '100.64.0.82', :network => '100.64.0.80/29', :route_hint => [] }, 
                               ],
                   :node_type => :linux,
                   :routes => []    
@@ -88,8 +82,6 @@ class Nodes
 
     'lk6' => { :interfaces => [{ :network_name => 'lk6-dist-net', :ipv4 => '192.168.213.1',  :network => '192.168.213.0/24', :route_hint => [{:network => '10.13.0.0/16', :network_name => 'lk6-sites'}] },
                               { :network_name => 'lk6-net', :ipv4 => '10.13.1.30', :network => '10.13.1.0/27', :route_hint => [] },
-                              { :network_name => 'lk6-dist-net2', :ipv4 => '100.64.142.1',  :network => '100.64.142.0/23', :route_hint => [] },
-                              { :network_name => 'lk6-site', :ipv4 => '100.64.0.67', :network => '100.64.0.64/29', :route_hint => [] }, 
                               ],
                   :node_type => :linux,
                   :routes => []    
@@ -99,8 +91,6 @@ class Nodes
                                 { :network_name => 'beach-net', :ipv4 => '10.3.0.30', :network => '10.3.0.0/27', :route_hint => [] },
                                 { :network_name => 'wikk006-net', :ipv4 => '10.3.1.158',  :network => '10.3.1.128/27', :route_hint => [] }, 
                                 { :network_name => 'wikk030-net', :ipv4 => '10.3.1.94',  :network => '10.3.1.64/27', :route_hint => [] }, 
-                                { :network_name => 'beach-dist-net2', :ipv4 => '100.64.130.1',  :network => '100.64.130.0/23', :route_hint => [] },
-                                { :network_name => 'beach-site', :ipv4 => '100.64.0.114', :network => '100.64.0.112/29', :route_hint => [] }, 
                                 ],
                    :node_type => :zebra,
                   :routes => []    
@@ -108,8 +98,6 @@ class Nodes
 
     'beach2' => { :interfaces => [{ :network_name => 'beach2-dist-net', :ipv4 => '192.168.218.1',  :network => '192.168.218.0/24', :route_hint => [{:network => '10.18.0.0/16', :network_name => 'beach2-sites'}] },
                                   { :network_name => 'beach-net', :ipv4 => '10.3.0.28', :network => '10.3.0.0/27', :route_hint => [] },
-                                  { :network_name => 'beach2-dist-net2', :ipv4 => '100.64.132.1',  :network => '100.64.132.0/23', :route_hint => [] },
-                                  { :network_name => 'beach-site', :ipv4 => '100.64.0.115', :network => '100.64.0.112/29', :route_hint => [] }, 
                                 ],
                   :node_type => :linux,
                   :routes => []    
@@ -117,8 +105,6 @@ class Nodes
  
     'barn' => { :interfaces => [{ :network_name => 'barn-dist-net', :ipv4 => '192.168.204.1',  :network => '192.168.204.0/24', :route_hint => [{:network => '10.4.0.0/16', :network_name => 'barn-sites'}] },
                                 { :network_name => 'barn-net', :ipv4 => '10.4.1.30', :network => '10.4.1.0/27', :route_hint => [] },
-                                { :network_name => 'barn-dist-net2', :ipv4 => '100.64.128.1',  :network => '100.64.128.0/23', :route_hint => [] },
-                                { :network_name => 'barn-site', :ipv4 => '100.64.0.98', :network => '100.64.0.96/29', :route_hint => [] }, 
                                 ],
                    :node_type => :linux,
                   :routes => []    
@@ -126,8 +112,6 @@ class Nodes
 
     'oceanview2' => { :interfaces => [{ :network_name => 'oceanview2-dist-net', :ipv4 => '192.168.215.1',  :network => '192.168.215.0/24', :route_hint => [{:network => '10.15.0.0/16', :network_name => 'oceanview2-sites'}] },
                                       { :network_name => 'oceanview-net', :ipv4 => '10.5.1.26', :network => '10.5.1.0/27', :route_hint => [] },
-                                      { :network_name => 'oceanview2-dist-net2', :ipv4 => '100.64.144.1',  :network => '100.64.144.0/23', :route_hint => [] },
-                                      { :network_name => 'oceanview-site', :ipv4 => '100.64.0.130', :network => '100.64.0.128/28', :route_hint => [] }, 
                                     ],
                   :node_type => :linux,
                   :routes => []    
@@ -135,8 +119,6 @@ class Nodes
      
     'oceanview4' => { :interfaces => [{ :network_name => 'oceanview4-dist-net', :ipv4 => '192.168.217.1',  :network => '192.168.217.0/24', :route_hint => [{:network => '10.17.0.0/16', :network_name => 'oceanview4-sites'}] },
                                       { :network_name => 'oceanview-net', :ipv4 => '10.5.1.24', :network => '10.5.1.0/27', :route_hint => [] },
-                                      { :network_name => 'oceanview4-dist-net2', :ipv4 => '100.64.146.1',  :network => '100.64.146.0/23', :route_hint => [] },
-                                      { :network_name => 'oceanview-site', :ipv4 => '100.64.0.131', :network => '100.64.0.128/28', :route_hint => [] }, 
                                       ],
                   :node_type => :linux,
                   :routes => []    
@@ -144,7 +126,6 @@ class Nodes
 
      'relay069' => { :interfaces => [{ :network_name => 'relay069-net', :ipv4 => '10.16.0.30',  :network => '10.16.0.0/27', :route_hint => [{:network => '10.16.0.0/16', :network_name => 'relay069-sites'}] },
                                     { :network_name => 'lk6-dist-net', :ipv4 => '192.168.213.14', :network => '192.168.213.0/24', :route_hint => [] },
-                                    { :network_name => 'relay069-site', :ipv4 => '100.64.0.73', :network => '100.64.0.72/29', :route_hint => [] }, 
                                     ], 
                   :node_type => :linux,
                   :routes => []    
@@ -152,7 +133,6 @@ class Nodes
                 
     #Backbone routers, interconnecting distribution sites and the gateway           
     'wikkb16' => { :interfaces => [ { :network_name => 'b16-b17-net', :ipv4 => '192.168.200.33',  :network => '192.168.200.32/30', :route_hint => [] },
-                                    { :network_name => 'wikkb16-b17-net', :ipv4 => '100.64.0.240',  :network => '100.64.0.240/31', :route_hint => [] },
                                     { :network_name => 'gate-net', :ipv4 => '100.64.0.7', :network => '100.64.0.0/27', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
@@ -162,8 +142,6 @@ class Nodes
     'wikkb17' => { :interfaces => [ { :network_name => 'b16-b17-net', :ipv4 => '192.168.200.34',  :network => '192.168.200.32/30', :route_hint => [{:network => '10.7.0.0/16', :network_name => 'lk3-sites'}] },
                                     { :network_name => 'lk3-net', :ipv4 => '10.4.1.30', :network => '10.4.1.0/27', :route_hint => [] }, 
                                     { :network_name => 'wikk166-net', :ipv4 => '10.7.1.94',  :network => '10.7.1.64/27', :route_hint => [] }, 
-                                    { :network_name => 'wikkb16-b17-net', :ipv4 => '100.64.0.241',  :network => '100.64.0.240/31', :route_hint => [] },
-                                    { :network_name => 'lk3-site', :ipv4 => '100.64.0.89', :network => '100.64.0.88/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
@@ -171,8 +149,6 @@ class Nodes
 
     'wikkb18' => { :interfaces => [{ :network_name => 'b18-b19-net', :ipv4 => '192.168.200.37',  :network => '192.168.200.36/30', :route_hint => [] },
                                     { :network_name => 'lk3-net', :ipv4 => '10.4.1.29', :network => '10.4.1.0/27', :route_hint => [] },
-                                    { :network_name => 'wikkb18-b19-net', :ipv4 => '100.64.0.250',  :network => '100.64.0.250/31', :route_hint => [] },
-                                    { :network_name => 'lk3-site', :ipv4 => '100.64.0.90', :network => '100.64.0.88/29', :route_hint => [] }, 
                                     ],
                   :node_type => :linux,
                   :routes => []    
@@ -180,8 +156,6 @@ class Nodes
 
     'wikkb19' => { :interfaces => [{ :network_name => 'b18-b19-net', :ipv4 => '192.168.200.38',  :network => '192.168.200.36/30', :route_hint => [] },
                                   { :network_name => 'barn-net', :ipv4 => '10.4.1.29', :network => '10.4.1.0/27', :route_hint => [] },
-                                  { :network_name => 'wikkb18-b19-net', :ipv4 => '100.64.0.251',  :network => '100.64.0.250/31', :route_hint => [] },
-                                  { :network_name => 'barn-site', :ipv4 => '100.64.0.97', :network => '100.64.0.96/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
@@ -189,8 +163,6 @@ class Nodes
 
     'wikkb20' => { :interfaces => [{ :network_name => 'b20-b21-net', :ipv4 => '192.168.200.50',  :network => '192.168.200.48/30', :route_hint => [] },
                                   { :network_name => 'lk3-net', :ipv4 => '10.4.1.28', :network => '10.4.1.0/27', :route_hint => [] },
-                                  { :network_name => 'wikkb20-b21-net', :ipv4 => '100.64.0.252',  :network => '100.64.0.252/31', :route_hint => [] },
-                                  { :network_name => 'lk3-site', :ipv4 => '100.64.0.91', :network => '100.64.0.88/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
@@ -198,15 +170,12 @@ class Nodes
 
     'wikkb21' => { :interfaces => [{ :network_name => 'b20-b21-net', :ipv4 => '192.168.200.49',  :network => '192.168.200.48/30', :route_hint => [] },
                                     { :network_name => 'lk4-net', :ipv4 => '10.8.0.29', :network => '10.8.0.0/27', :route_hint => [] },
-                                    { :network_name => 'wikkb20-b21-net', :ipv4 => '100.64.0.253',  :network => '100.64.0.252/31', :route_hint => [] },
-                                    { :network_name => 'lk4-site', :ipv4 => '100.64.0.105', :network => '100.64.0.104/29', :route_hint => [] }, 
                                     ],
                   :node_type => :linux,
                   :routes => []    
                 },
 
     'wikkb26' => { :interfaces => [{ :network_name => 'b26-b27-net', :ipv4 => '192.168.200.97',  :network => '192.168.200.96/30', :route_hint => [] },
-                                  { :network_name => 'wikkb26-b27-net', :ipv4 => '100.64.0.242',  :network => '100.64.0.242/31', :route_hint => [] },
                                   { :network_name => 'gate-net', :ipv4 => '100.64.0.8', :network => '100.64.0.0/27', :route_hint => [] }, 
                                   ],
                    :node_type => :linux,
@@ -215,15 +184,12 @@ class Nodes
  
     'wikkb27' => { :interfaces => [{ :network_name => 'b26-b27-net', :ipv4 => '192.168.200.98',  :network => '192.168.200.96/30', :route_hint => [] },
                                    { :network_name => 'oceanview-net', :ipv4 => '10.5.1.29', :network => '10.5.1.0/27', :route_hint => [{:network => '10.5.0.0/16', :network_name => 'oceanview-sites'}] }, 
-                                   { :network_name => 'wikkb26-b27-net', :ipv4 => '100.64.0.243',  :network => '100.64.0.242/31', :route_hint => [] },
-                                   { :network_name => 'oceanview-site', :ipv4 => '100.64.0.129', :network => '100.64.0.128/28', :route_hint => [] }, 
                                    ],
                   :node_type => :linux,
                   :routes => []    
                 },
   
     'wikkb30' => { :interfaces => [{ :network_name => 'b30-b31-net', :ipv4 => '192.168.200.101',  :network => '192.168.200.100/30', :route_hint => [] },
-                                  { :network_name => 'wikkb30-b31-net', :ipv4 => '100.64.0.244',  :network => '100.64.0.244/31', :route_hint => [] },
                                   { :network_name => 'gate-net', :ipv4 => '100.64.0.9', :network => '100.64.0.0/27', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
@@ -232,8 +198,6 @@ class Nodes
 
     'wikkb31' => { :interfaces => [{ :network_name => 'b30-b31-net', :ipv4 => '192.168.200.102',  :network => '192.168.200.100/30', :route_hint => [] },
                                   { :network_name => 'lk6-net', :ipv4 => '10.13.1.29', :network => '10.13.1.0/27', :route_hint => [] }, 
-                                  { :network_name => 'wikkb30-b31-net', :ipv4 => '100.64.0.245',  :network => '100.64.0.244/31', :route_hint => [] },
-                                  { :network_name => 'lk6-site', :ipv4 => '100.64.0.65', :network => '100.64.0.64/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
@@ -241,8 +205,6 @@ class Nodes
 
     'wikkb32' => { :interfaces => [{ :network_name => 'b32-b33-net', :ipv4 => '192.168.200.105',  :network => '192.168.200.104/30', :route_hint => [] },
                                   { :network_name => 'lk6-net', :ipv4 => '10.13.1.6', :network => '10.13.1.0/27', :route_hint => [] },
-                                  { :network_name => 'wikkb32-b33-net', :ipv4 => '100.64.0.248',  :network => '100.64.0.248/31', :route_hint => [] },
-                                  { :network_name => 'lk6-site', :ipv4 => '100.64.0.66', :network => '100.64.0.64/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
@@ -251,15 +213,12 @@ class Nodes
     'wikkb33' => { :interfaces => [{ :network_name => 'b32-b33-net', :ipv4 => '192.168.200.106',  :network => '192.168.200.104/30', :route_hint => [] },
                                   { :network_name => 'lk5-net', :ipv4 => '10.9.0.29',  :network => '10.9.0.0/27', :route_hint => [] },
                                   { :network_name => 'wikk171-net', :ipv4 => '10.9.2.158',  :network => '10.9.2.128/27', :route_hint => [] },
-                                  { :network_name => 'wikkb32-b33-net', :ipv4 => '100.64.0.249',  :network => '100.64.0.248/31', :route_hint => [] },
-                                  { :network_name => 'lk5-site', :ipv4 => '100.64.0.81', :network => '100.64.0.80/29', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
                   :routes => []    
                 },
 
     'wikkb34' => { :interfaces => [{ :network_name => 'b34-b35-net', :ipv4 => '192.168.200.109',  :network => '192.168.200.108/30', :route_hint => [] },
-                                  { :network_name => 'wikkb34-b35-net', :ipv4 => '100.64.0.246',  :network => '100.64.0.246/31', :route_hint => [] },
                                   { :network_name => 'gate-net', :ipv4 => '100.64.0.10', :network => '100.64.0.0/27', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
@@ -268,8 +227,6 @@ class Nodes
 
     'wikkb35' => { :interfaces => [{ :network_name => 'b34-b35-net', :ipv4 => '192.168.200.110',  :network => '192.168.200.108/30', :route_hint => [] },
                                   { :network_name => 'beach-net', :ipv4 => '10.3.0.29', :network => '10.3.0.0/27', :route_hint => [] },
-                                  { :network_name => 'wikkb34-b35-net', :ipv4 => '100.64.0.247',  :network => '100.64.0.246/31', :route_hint => [] },
-                                  { :network_name => 'beach-site', :ipv4 => '100.64.0.113', :network => '100.64.0.112/29', :route_hint => [] }, 
                                    ],
                    :node_type => :linux,
                   :routes => []    
@@ -304,8 +261,7 @@ class Nodes
   
     'wikk124' => { :interfaces => [{ :network_name => 'oceanview-net', :ipv4 => '10.5.1.3', :network => '10.5.1.0/27', :route_hint => [] },
                                   { :network_name => 'wikk124-net', :ipv4 => '10.5.4.94', :network => '10.5.4.64/27', :route_hint => [] },
-                                  #{ :network_name => 'wikk124-adsl', :ipv4 => '192.168.249.1', :network => '192.168.249.0/24', :route_hint => [] },
-                                   { :network_name => 'dsl2-net', :ipv4 => '100.64.0.41', :network => '100.64.0.32/27', :route_hint => [] }, 
+                                  #{ :network_name => 'dsl2-net', :ipv4 => '100.64.0.41', :network => '100.64.0.32/27', :route_hint => [] }, 
                                    ],
                   :node_type => :linux,
                   :routes => []    
@@ -315,7 +271,6 @@ class Nodes
                                     { :network_name => 'wikk130', :ipv4 => '10.16.2.30',  :network => '10.16.2.0/27', :route_hint => [] },
                                     { :network_name => 'wikk137', :ipv4 => '10.16.1.222',  :network => '10.16.1.192/27', :route_hint => [] },
                                     { :network_name => 'wikk155', :ipv4 => '10.16.2.94',  :network => '10.16.2.64/27', :route_hint => [] }, 
-                                    { :network_name => 'relay069-site', :ipv4 => '100.64.0.74', :network => '100.64.0.72/29', :route_hint => [] }, 
                                     ],
                   :node_type => :zebra,
                   :routes => []    
@@ -324,7 +279,6 @@ class Nodes
     'relay069b' => { :interfaces => [{ :network_name => 'relay069-net', :ipv4 => '10.16.0.29',  :network => '10.16.0.0/27', :route_hint => [] },
                                     { :network_name => 'wikk126', :ipv4 => '10.16.1.62',  :network => '10.16.1.32/27', :route_hint => [] }, 
                                     { :network_name => 'wikk127', :ipv4 => '10.16.1.94',  :network => '10.16.1.64/27', :route_hint => [] }, 
-                                    { :network_name => 'relay069-site', :ipv4 => '100.64.0.75', :network => '100.64.0.72/29', :route_hint => [] }, 
                                     ],
                   :node_type => :zebra,
                   :routes => []    
