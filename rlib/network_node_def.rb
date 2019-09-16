@@ -33,12 +33,22 @@ class Nodes
   #for each node, add routes from networks we are attached to.
   private def gen_node_routes
     @nodes.each do |node_name, node_details|
+      #Cache network names directly attached to this host, so we can block loops.
+      local_networks = []
+      node_details[:interfaces].each do |interface|
+        local_networks << interface[:network_name]
+        interface[:route_hint].each do |rh|
+          local_networks << rh[:network_name]
+        end
+      end
+      
+      #add in routes for this node.
       node_details[:final_routes] ||= []
       node_details[:interfaces].each do |interface|
         @network_routes[interface[:network_name]].each do |gw, routes|
           if gw != interface[:ipv4] #Don't want to record routes that go through us.
             routes.each do |route| 
-              node_details[:final_routes] << route if route[:path] == nil || (! route[:path].include?(node_name))
+              node_details[:final_routes] << route if ( route[:path] == nil || (! route[:path].include?(node_name))) && (! local_networks.include?(route[:network_name]))
             end
           else #Local interfaces.
             node_details[:final_routes] << {:network_name => interface[:network_name], :local => true, :node_name => node_name, :gw => gw, :interface_network_name => interface[:network_name],  :route => IPAddr.new(interface[:network]), :hop_count => 0, :path => [] }
@@ -82,6 +92,7 @@ class Nodes
   end
   
   def path_contains_node_on_this_net(network:, path:)
+    return if @networks_nodes[network] == nil
     @networks_nodes[network].each do |node_name|
       return true if path.include?(node_name)
     end
@@ -101,8 +112,6 @@ class Nodes
         next true #Current route is already present, but with a higher hop_count, so delete it and add new one upon returning
       elsif route[:route].net_include?(new_route[:route]) #Route is already present, or a superset of the route.
         return false #Exit the loop, but don't delete the current one.
-      elsif path_contains_node_on_this_net(network: network, path: new_route[:path][1..-1]) #remove routes where the path loops back through
-        true
       else
         #Deletes this member if new one encompassed the route of the current one. This could apply to several route entries.
         new_route[:route].net_include?(route[:route])
@@ -121,6 +130,7 @@ class Nodes
       @network_routes[network_name] ||= {} #Within each network, routes per node
       default_route = { :hop_count => 1000, :gw => @default_route }
       routes_i_have(network_name: network_name, path: [], hop_count: 1) do |route|
+        next if path_contains_node_on_this_net(network: network_name, path: route[:path][1..-1])
         @network_routes[network_name][route[:gw]] ||= []
         if route[:route] == @default_route
           if route[:hop_count] < default_route[:hop_count]
@@ -219,11 +229,11 @@ class Nodes
     gen_intial_node_routes
     #debug_dump_intial_node_routes
     calculate_next_hop
-    #debug_dump_next_hop_routes
+    debug_dump_next_hop_routes
     calculate_all_routes #A route belongs to a node, and each node tells the adjacent nodes the routes it knows.
     #debug_dump_network_routes
     gen_node_routes
-    debug_dump_final_node_routes
+    #debug_dump_final_node_routes
   end
 
   #create a Hash of all networks defined in @nodes, with the nodes on each as an array of strings, per network.
