@@ -1,6 +1,6 @@
 require_relative 'ipAddr_ext.rb'
 require "wikk_json" #gem version
-require_relative '../conf/nodes2.rb' #This is where the network nodes, and their interfaces are defined.
+require_relative '../conf/nodes3.rb' #This is where the network nodes, and their interfaces are defined.
 
 # holds a list of nodes on each network, and generates the routes needed to traverse the networks.
 # Data is currently the conf/nodes.rb node definitions, but I will change this to get the data from the DB, which has all nodes and their interfaces.
@@ -229,7 +229,7 @@ class Nodes
     gen_intial_node_routes
     #debug_dump_intial_node_routes
     calculate_next_hop
-    debug_dump_next_hop_routes
+    #debug_dump_next_hop_routes
     calculate_all_routes #A route belongs to a node, and each node tells the adjacent nodes the routes it knows.
     #debug_dump_network_routes
     gen_node_routes
