@@ -143,8 +143,8 @@ class Nodes
                 },
 
      'relay069' => { :interfaces => [{ :network_name => 'relay069-net', :ipv4 => '10.16.0.30',  :network => '10.16.0.0/27', :route_hint => [{:network => '10.16.0.0/16', :network_name => 'relay069-sites'}] },
-                                    { :network_name => 'lk6-dist-net', :ipv4 => '192.168.213.14', :network => '192.168.213.0/24', :route_hint => [] },
-                                    { :network_name => 'relay069-site', :ipv4 => '100.64.0.73', :network => '100.64.0.72/29', :route_hint => [] }, 
+                                     { :network_name => 'lk6-dist-net', :ipv4 => '192.168.213.14', :network => '192.168.213.0/24', :route_hint => [] },
+                                     { :network_name => 'relay069-site', :ipv4 => '100.64.0.73', :network => '100.64.0.72/29', :route_hint => [] }, 
                                     ], 
                   :node_type => :linux,
                   :routes => []    
@@ -304,7 +304,7 @@ class Nodes
   
     'wikk124' => { :interfaces => [{ :network_name => 'oceanview-net', :ipv4 => '10.5.1.3', :network => '10.5.1.0/27', :route_hint => [] },
                                    { :network_name => 'wikk124-net', :ipv4 => '10.5.4.94', :network => '10.5.4.64/27', :route_hint => [] },
-                                   { :network_name => 'dsl2-net', :ipv4 => '100.64.0.41', :network => '100.64.0.32/27', :route_hint => [] }, 
+                                   #{ :network_name => 'dsl2-net', :ipv4 => '100.64.0.41', :network => '100.64.0.32/27', :route_hint => [] }, 
                                    ],
                   :node_type => :linux,
                   :routes => []    
