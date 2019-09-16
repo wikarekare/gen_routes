@@ -139,8 +139,8 @@ class Nodes
                   :routes => []    
                 },
   
-    'wikkb17' => { :interfaces => [ { :network_name => 'b16-b17-net', :ipv4 => '192.168.200.34',  :network => '192.168.200.32/30', :route_hint => [{:network => '10.7.0.0/16', :network_name => 'lk3-sites'}] },
-                                    { :network_name => 'lk3-net', :ipv4 => '10.4.1.30', :network => '10.4.1.0/27', :route_hint => [] }, 
+    'wikkb17' => { :interfaces => [ { :network_name => 'b16-b17-net', :ipv4 => '192.168.200.34',  :network => '192.168.200.32/30', :route_hint => [] },
+                                    { :network_name => 'lk3-net', :ipv4 => '10.4.1.30', :network => '10.4.1.0/27', :route_hint => [{:network => '10.7.0.0/16', :network_name => 'lk3-sites'}] }, 
                                     { :network_name => 'wikk166-net', :ipv4 => '10.7.1.94',  :network => '10.7.1.64/27', :route_hint => [] }, 
                                   ],
                   :node_type => :linux,
