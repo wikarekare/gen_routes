@@ -16,7 +16,7 @@ require_relative 'rlib/save_routes.rb'
   @nodes.each do |node_name, node_details|
     Save_Routes.open(routes_dir: routes_dir, node_name: node_name, target: node_details[:node_type]) do |sr|
       sr.save_routes(routes: node_details[:final_routes])
-      #sr.save_routes(routes: node_details[:distribution_routes])
+      sr.save_routes(routes: node_details[:distribution_routes])
     end
   end
 

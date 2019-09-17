@@ -62,7 +62,7 @@ class Nodes
     puts "Node routes\n\n"
     @nodes.each do |node_name, node_details|
       puts node_name
-      y = node_details[:final_routes].sort_by { |v| v[:local].to_s + v[:node_name] + v[:network_name] } # sort_by { |v| [v[:local], v[:network_name]]} Causes exception?
+      y = node_details[:final_routes].sort_by { |v| v[:route].to_i } #v[:local].to_s + v[:node_name] + v[:network_name] } # sort_by { |v| [v[:local], v[:network_name]]} Causes exception?
       y.each do |route|
         puts "  #{route}"
       end

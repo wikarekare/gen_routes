@@ -60,12 +60,20 @@ class Save_Routes
         @fd.puts "  /sbin/route add -net #{route[:route].to_string} -netmask #{route[:route].mask_to_s} #{route[:gw]}"
       end
     when :ubnt_conf
-      @route_count = @route_count == 0 ? 2 : @route_count + 1
-      @fd.puts "route.#{@route_count}.comment=#{comment}"
-      @fd.puts "route.#{@route_count}.gateway=#{route[:gw]}"
-      @fd.puts "route.#{@route_count}.ip=#{route[:route].to_string}"
-      @fd.puts "route.#{@route_count}.netmask=#{route[:route].mask_to_s}"
-      @fd.puts "route.#{@route_count}.status=enabled"
+      if(route[:network_name] == 'default')
+        @fd.puts "route.1.comment=#{comment}"
+        @fd.puts "route.1.gateway=#{route[:gw]}"
+        @fd.puts "route.1.ip=0.0.0.0"
+        @fd.puts "route.1.netmask=#{route[:route].mask_to_s}"
+        @fd.puts "route.1.status=enabled"
+      else
+        @route_count = @route_count == 0 ? 2 : @route_count + 1
+        @fd.puts "route.#{@route_count}.comment=#{comment}"
+        @fd.puts "route.#{@route_count}.gateway=#{route[:gw]}"
+        @fd.puts "route.#{@route_count}.ip=#{route[:route].to_string}"
+        @fd.puts "route.#{@route_count}.netmask=#{route[:route].mask_to_s}"
+        @fd.puts "route.#{@route_count}.status=enabled"
+      end  
     when :zebra
       if route[:route].to_s(with_bits: true) == '0.0.0.0/0'
         @fd.puts "; Default"
@@ -96,7 +104,7 @@ class Save_Routes
   def save_routes(routes:)
     return if routes == nil
 
-    res = routes.sort_by { |v| v[:gw].to_i }
+    res = routes.sort_by { |v| v[:route].to_i }
     res.each do |route|
       next if route[:local] #Don't need to output local interface routes.
       create_route_command(route: route, comment: "Network #{route[:network_name]}  via #{route[:node_name]} <--------")
