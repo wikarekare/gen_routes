@@ -238,17 +238,27 @@ class Nodes
 
   #create a Hash of all networks defined in @nodes, with the nodes on each as an array of strings, per network.
   #This gives us the neighbouring nodes, so we can generate the next hop routes to the neighbouring networks.
+  #nb. Should drop the network names as indexes and just use the IP address ranges of each network.
   private def gen_networks_nodes
     @networks_nodes = {}
     @networks_range = {}
+    @local_networks = {}
     @nodes.each do |node_name, node_detail| #Hash of nodes
       node_detail[:interfaces].each do |i| #Array of Hashes.
+        if @local_networks[ IPAddr.new( i[:network] ) ] == nil
+          #Index the networks by IP Address
+          @local_networks[ IPAddr.new( i[:network] ) ] = i[:network_name]
+        end
         if @networks_nodes[ i[:network_name] ] == nil
           @networks_nodes[ i[:network_name] ] = [node_name]  #What nodes are on what networks
           @networks_range[ i[:network_name] ] = IPAddr.new( i[:network] )
+          #ensure we haven't named the same network differently.
+          if @local_networks[ IPAddr.new( i[:network] ) ] != i[:network_name]
+            STDERR.puts "node[#{node_name}] network[#{i[:network_name]}] @local_networks[ #{ IPAddr.new( i[:network]) } ] != #{i[:network]}"
+          end
         else
           @networks_nodes[ i[:network_name] ] << node_name
-          #Ensure a node's network is matches the last definition of that network.
+          #Ensure a node's network name matches the last IP Address assigned to that network name.
           if( @networks_range[ i[:network_name] ] != IPAddr.new( i[:network]) )
             STDERR.puts "node[#{node_name}] network[#{i[:network_name]}] #{@networks_range[i[:network_name].to_s]} != #{i[:network]}"
           end
@@ -268,19 +278,22 @@ class Nodes
     end
   end
   
+  #needs a check to filter out routes to customers that are directly connected, rather than needing a route.
   def add_distribution_routes
     #'barn' => { :distribution => '192.168.204.0/24', :gw => '192.168.204.1', :sites => '10.4.0.0/16', :site_mask => 27, :site_size => 32, :count => 32},
     @distribution.each do |distribution_site_name, distribution_detail| 
       distribution_ip = IPAddr.new(distribution_detail[:distribution])
       site_ip_range = IPAddr.new(distribution_detail[:sites])
-      @nodes[distribution_site_name] ||= {}                           #Make sure we exit
+      @nodes[distribution_site_name] ||= {}                           #Make sure site has an entry
       @nodes[distribution_site_name][:distribution_routes] ||= []     #Somewhere to save the distribution routes.
       (1...distribution_detail[:count]).each do |c|
         interface_name = "#{distribution_site_name}-links"
         node_name = "#{distribution_site_name}-#{"%02d"%c}"
         gw = (distribution_ip + (c + 1)).to_string
         network = (site_ip_range + (c * distribution_detail[:site_size])).mask(distribution_detail[:site_mask])
-        @nodes[distribution_site_name][:distribution_routes] << {:network_name => "#{node_name}-site", :local => false, :node_name => node_name, :gw => gw, :interface_network_name => interface_name,  :route => network, :hop_count => 1 }
+        if( @local_networks[ network ] == nil )
+          @nodes[distribution_site_name][:distribution_routes] << {:network_name => "#{node_name}-site", :local => false, :node_name => node_name, :gw => gw, :interface_network_name => interface_name,  :route => network, :hop_count => 1 }
+        end
       end
     end
   end
