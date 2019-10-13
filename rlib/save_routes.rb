@@ -28,7 +28,7 @@ class Save_Routes
       @fd.puts "{ ["
       @fd.puts "// #{@node_name} #{Time.now.strftime("%Y-%m-%d %H:%M")} (#{@target})"
     when :zebra
-      @fd.puts "; #{@node_name} #{Time.now.strftime("%Y-%m-%d %H:%M")} (#{@target})"
+      @fd.puts "! #{@node_name} #{Time.now.strftime("%Y-%m-%d %H:%M")} (#{@target})"
     else
       @fd.puts "# #{@node_name} #{Time.now.strftime("%Y-%m-%d %H:%M")} (#{@target})"
     end
@@ -76,10 +76,10 @@ class Save_Routes
       end  
     when :zebra
       if route[:route].to_s(with_bits: true) == '0.0.0.0/0'
-        @fd.puts "; Default"
+        @fd.puts "! Default"
         @fd.puts "ip route 0.0.0.0/0 #{route[:gw]}"
       else
-        @fd.puts "; #{comment}"
+        @fd.puts "! #{comment}"
         @fd.puts "ip route #{route[:route].to_s(with_bits: true)} #{route[:gw]}"
       end
     when :json
