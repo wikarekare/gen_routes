@@ -5,6 +5,9 @@ require 'ipaddr'
 #test if a network is a subnet of another network
 #Do simple additions to generate new IP addresses. 
 class IPAddr
+  attr_accessor :addr
+  attr_reader :mask_addr
+
   #Expose mask in x.x.x.x format
   def mask_to_s
     _to_string(@mask_addr)
@@ -37,7 +40,22 @@ class IPAddr
     self.include?(ipaddr) && @mask_addr <= ipaddr.mask_to_i
   end
   
+  #IP address addition, so we can iteration through a network
+  # @param value [Integer] is added to @addr and a new IPAddr is returned.
   def +(value)
     self.clone.set(@addr + value, @family)
+  end
+  
+  #Iterate through all IP addresses in this network
+  def each
+    ipaddr = self.clone.set(@addr, @family)
+    (0...(@mask_addr^0xffffffff)).each do |a|
+      yield(ipaddr)
+      ipaddr.addr += 1
+    end
+  end
+
+  def ==(value)
+    @addr == value.addr && @mask_addr == value.mask_addr
   end
 end
