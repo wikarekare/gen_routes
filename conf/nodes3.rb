@@ -56,7 +56,7 @@ class Nodes
                                  #{ :network_name => 'lk1t-dist-net2', :ipv4 => '100.64.134.1',  :network => '100.64.134.0/23', :route_hint => [{:network => '10.19.0.0/16', :network_name => 'lk1t-sites'}] },
                                  { :network_name => 'gate-net', :ipv4 => '100.64.0.5', :network => '100.64.0.0/27', :route_hint => [] }, 
                                ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
  
@@ -64,7 +64,7 @@ class Nodes
                                #{ :network_name => 'lk2-dist-net2', :ipv4 => '100.64.136.1',  :network => '100.64.136.0/23', :route_hint => [{:network => '10.6.0.0/16', :network_name => 'lk2-sites'}] },
                                 { :network_name => 'gate-net', :ipv4 => '100.64.0.6', :network => '100.64.0.0/27', :route_hint => [] }, 
                               ],
-                   :node_type => :linux,
+                   :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
@@ -72,7 +72,7 @@ class Nodes
                                #{ :network_name => 'lk4-dist-net2', :ipv4 => '100.64.138.1',  :network => '100.64.138.0/23', :route_hint => [{:network => '10.8.0.0/16', :network_name => 'lk4-sites'}] },
                                 { :network_name => 'lk4-site', :ipv4 => '100.64.0.106', :network => '100.64.0.104/29', :route_hint => [] }, 
                              ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
@@ -88,17 +88,15 @@ class Nodes
                                #{ :network_name => 'lk6-dist-net2', :ipv4 => '100.64.142.1',  :network => '100.64.142.0/23', :route_hint => [{:network => '10.13.0.0/16', :network_name => 'lk6-sites'}] },
                                 { :network_name => 'lk6-site', :ipv4 => '100.64.0.67', :network => '100.64.0.64/29', :route_hint => [] }, 
                               ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
     'beach' => { :interfaces => [ { :network_name => 'beach-dist-net', :ipv4 => '192.168.203.1',  :network => '192.168.203.0/24', :route_hint => [{:network => '10.3.0.0/16', :network_name => 'beach-sites'}] },
                                  #{ :network_name => 'beach-dist-net2', :ipv4 => '100.64.130.1',  :network => '100.64.130.0/23', :route_hint => [{:network => '10.3.0.0/16', :network_name => 'beach-sites'}] },
                                   { :network_name => 'beach-site', :ipv4 => '100.64.0.114', :network => '100.64.0.112/29', :route_hint => [] }, 
-                                  { :network_name => 'wikk006-net', :ipv4 => '10.3.1.158',  :network => '10.3.1.128/27', :route_hint => [] }, 
-                                  { :network_name => 'wikk030-net', :ipv4 => '10.3.1.94',  :network => '10.3.1.64/27', :route_hint => [] }, 
                                 ],
-                   :node_type => :zebra,
+                   :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
@@ -106,7 +104,7 @@ class Nodes
                                   #{ :network_name => 'beach2-dist-net2', :ipv4 => '100.64.132.1',  :network => '100.64.132.0/23', :route_hint => [{:network => '10.18.0.0/16', :network_name => 'beach2-sites'}] },
                                    { :network_name => 'beach-site', :ipv4 => '100.64.0.115', :network => '100.64.0.112/29', :route_hint => [] }, 
                                 ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
  
@@ -114,7 +112,7 @@ class Nodes
                                 #{ :network_name => 'barn-dist-net2', :ipv4 => '100.64.128.1',  :network => '100.64.128.0/23', :route_hint => [{:network => '10.4.0.0/16', :network_name => 'barn-sites'}] },
                                  { :network_name => 'barn-site', :ipv4 => '100.64.0.98', :network => '100.64.0.96/29', :route_hint => [] }, 
                                 ],
-                   :node_type => :linux,
+                   :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
@@ -122,7 +120,7 @@ class Nodes
                                       #{ :network_name => 'oceanview2-dist-net2', :ipv4 => '100.64.144.1',  :network => '100.64.144.0/23', :route_hint => [{:network => '10.15.0.0/16', :network_name => 'oceanview2-sites'}] },
                                        { :network_name => 'oceanview-site', :ipv4 => '100.64.0.130', :network => '100.64.0.128/28', :route_hint => [] }, 
                                     ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
      
@@ -130,7 +128,7 @@ class Nodes
                                       #{ :network_name => 'oceanview4-dist-net2', :ipv4 => '100.64.146.1',  :network => '100.64.146.0/23', :route_hint => [{:network => '10.17.0.0/16', :network_name => 'oceanview4-sites'}] },
                                        { :network_name => 'oceanview-site', :ipv4 => '100.64.0.131', :network => '100.64.0.128/28', :route_hint => [] }, 
                                       ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
@@ -138,7 +136,7 @@ class Nodes
                                       { :network_name => 'lk6-dist-net', :ipv4 => '192.168.213.14', :network => '192.168.213.0/24', :route_hint => [] }, #Uplink to LK6
                                       { :network_name => 'relay069-site', :ipv4 => '100.64.0.73', :network => '100.64.0.72/29', :route_hint => [{:network => '10.16.0.0/16', :network_name => 'relay069-sites'}] }, 
                                     ], 
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
                 
@@ -252,6 +250,8 @@ class Nodes
     'wikkb35' => { :interfaces => [
                                     { :network_name => 'wikkb34-b35-net', :ipv4 => '100.64.0.247',  :network => '100.64.0.246/31', :route_hint => [] },
                                     { :network_name => 'beach-site', :ipv4 => '100.64.0.113', :network => '100.64.0.112/29', :route_hint => [] }, 
+                                    { :network_name => 'wikk006-net', :ipv4 => '10.3.1.158',  :network => '10.3.1.128/27', :route_hint => [] }, 
+                                    { :network_name => 'wikk030-net', :ipv4 => '10.3.1.94',  :network => '10.3.1.64/27', :route_hint => [] }, 
                                    ],
                    :node_type => :ubnt_conf,
                   :routes => []    
@@ -261,14 +261,14 @@ class Nodes
     'wikkb36' => { :interfaces => [ 
                                     { :network_name => 'dsl2-net', :ipv4 => '100.64.0.39', :network => '100.64.0.32/27', :route_hint => [] }, 
                                   ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
     'wikkb37' => { :interfaces => [
                                     { :network_name => 'dsl2-net', :ipv4 => '100.64.0.40', :network => '100.64.0.32/27', :route_hint => [] }, 
                                   ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
     #Individual hosts routers with more than one host site connected           
@@ -284,7 +284,7 @@ class Nodes
                                     { :network_name => 'wikk176-net', :ipv4 => '10.13.0.254', :network => '10.13.0.224/27', :route_hint => [] },  #First customer
                                     { :network_name => 'wikk160-net', :ipv4 => '10.13.3.30', :network => '10.13.3.0/27', :route_hint => [] },    #Second customer
                                   ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
   
@@ -292,7 +292,7 @@ class Nodes
                                     { :network_name => 'wikk163-net', :ipv4 => '10.9.2.126', :network => '10.9.2.96/27', :route_hint => [] },  #First customer
                                     { :network_name => 'wikk123-net', :ipv4 => '10.9.1.224', :network => '10.9.1.254/27', :route_hint => [] },    #Second customer
                                   ],
-                  :node_type => :linux,
+                  :node_type => :ubnt_conf,
                   :routes => []    
                 },
 
