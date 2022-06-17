@@ -22,7 +22,7 @@ class Save_Routes
   def create_route_command_leadin
     case @target
     when :linux, :bsd 
-      @fd.puts "#!/bin/sh"
+      @fd.puts "#!/bin/bash"
       @fd.puts "# #{@node_name} #{Time.now.strftime("%Y-%m-%d %H:%M")} (#{@target})"
     when :json
       @fd.puts "{ ["
