@@ -1,8 +1,10 @@
 #!/usr/local/bin/ruby
 require 'json'
 require 'fileutils'
-require_relative 'rlib/net/network_node_def.rb' # Should pull this from the database, so we don't maintain a separate copy.
-require_relative 'rlib/net/save_routes.rb'
+RLIB = '/wikk/rlib'
+
+require_relative "#{RLIB}/net/network_node_def.rb" # Should pull this from the database, so we don't maintain a separate copy.
+require_relative "#{RLIB}/net/save_routes.rb"
 
 @conf = JSON.parse(File.read(__dir__ + '/conf/conf.json'))
 @auth = JSON.parse(File.read(__dir__ + '/conf/auth.json'))
