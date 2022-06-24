@@ -1,7 +1,7 @@
 #!/usr/local/bin/ruby
 require 'json'
 require 'fileutils'
-RLIB = '/wikk/rlib'
+RLIB = '/wikk/rlib' unless defined? RLIB
 
 require_relative "#{RLIB}/net/network_node_def.rb" # Should pull this from the database, so we don't maintain a separate copy.
 require_relative "#{RLIB}/net/save_routes.rb"
