@@ -1,2 +1,3 @@
 node_routes/
 conf/auth.json
+conf/nodes*
