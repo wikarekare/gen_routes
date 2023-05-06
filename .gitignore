@@ -1,3 +1,3 @@
 node_routes/
-conf/auth.json
-conf/nodes*
+etc/nodes*
+etc/net/nodes*
