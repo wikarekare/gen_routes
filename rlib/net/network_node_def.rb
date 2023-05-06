@@ -1,4 +1,4 @@
-require 'ipAddr_ext.rb'
+require_relative 'ipAddr_ext.rb'
 require 'wikk_json' # gem version
 require_relative '../conf/nodes3.rb' # This is where the network nodes, and their interfaces are defined.
 
