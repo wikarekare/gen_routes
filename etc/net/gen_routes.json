@@ -1,4 +1,4 @@
 {
   "route_dir": "/tmp/node_routes",
-  "file": "/wikk/etc/net/nodes.rb'"
+  "node_file": "/wikk/etc/net/nodes.rb"
 }
