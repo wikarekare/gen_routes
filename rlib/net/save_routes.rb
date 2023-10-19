@@ -45,6 +45,14 @@ class Save_Routes
 
   def create_route_command(route:, comment:)
     case @target
+    when :ip
+      if route[:route].to_s(with_bits: true) == '0.0.0.0/0'
+        @fd.puts '# Default (Will already be defined on router.)'
+        @fd.puts "# /sbin/route add default #{route[:gw]}"
+      else
+        @fd.puts "# #{comment}"
+        @fd.puts "  /usr/sbin/ip route add #{route[:route].to_s(with_bits: true)} via #{route[:gw]}"
+      end
     when :linux
       if route[:route].to_s(with_bits: true) == '0.0.0.0/0'
         @fd.puts '# Default (Will already be defined on router.)'
