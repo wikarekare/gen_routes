@@ -1,6 +1,5 @@
 require_relative 'ipAddr_ext.rb'
 require 'wikk_json' # gem version
-require_relative '../conf/nodes3.rb' # This is where the network nodes, and their interfaces are defined.
 
 # holds a list of nodes on each network, and generates the routes needed to traverse the networks.
 # Data is currently the conf/nodes.rb node definitions, but I will change this to get the data from the DB, which has all nodes and their interfaces.
@@ -9,7 +8,8 @@ class Nodes
   attr_accessor :nodes
   attr_accessor :distribution
 
-  def initialize
+  def initialize(conf:)
+    require_relative conf
     @default_route = IPAddr.new('0.0.0.0/0')
     load_node_defs       # Load the node definitions
     distribution_defs    # Load the client network definitions
