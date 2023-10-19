@@ -11,7 +11,7 @@
     "user": "root",
     "group": "root"
   },
-  { "src": "etc/net",
+  { "src": "etc/net/",
     "dst": "etc/net",
     "mode": "0644",
     "user": "root",
