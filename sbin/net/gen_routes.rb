@@ -2,9 +2,7 @@
 require 'json'
 require 'fileutils'
 
-unless defined? WIKK_CONF
-  load '/wikk/etc/wikk.conf'
-end
+load '/wikk/etc/wikk.conf' unless defined? WIKK_CONF
 require_relative "#{RLIB}/net/network_node_def.rb" # Should pull this from the database, so we don't maintain a separate copy.
 require_relative "#{RLIB}/net/save_routes.rb"
 
